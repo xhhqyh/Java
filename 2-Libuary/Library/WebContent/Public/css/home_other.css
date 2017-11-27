@@ -1,0 +1,203 @@
+/*******新书页面样式*******/
+.center {
+	height: 850px;
+	margin-top: 50px;
+	/*background-color: darkgoldenrod;*/
+}
+
+.content {
+	width: 1366px;
+	height: 850px;
+	margin: auto;
+	/*background-color: cornflowerblue;*/
+}
+
+.booklist {
+	width: 800px;
+	height: 600px;
+	margin: auto;
+	position: relative;
+	top: 100px;
+	/*background-color: darkorange;*/
+}
+
+.booklist p {
+	height: 30px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 1px solid #000;
+}
+
+.booklist ul li {
+	display: block;
+	width: 800px;
+	height: 50px;
+	line-height: 50px;
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.book-p1 {
+	margin-left: 40px;
+	font-weight: bold;
+	
+}
+
+.book-p2{
+	margin-left: 200px;
+}
+
+/*购物车信息列表*/
+#table-car {
+	width: 500px;
+	height: 570px;
+	margin: auto;
+}
+
+#table-car,#send h3 {
+	padding-top: 50px;
+	text-align: center;
+}
+
+#table-car table {
+	width: 600px;
+	height: 200px;
+	margin-top: 40px;
+	margin-left: -50px;
+	text-align: center;
+}
+
+.border-1px {
+	height: 25px;
+	width: 80px;
+	margin: auto;
+	line-height: 25px;
+	display: inline-block;
+	background-color: #A7CB24;
+	border: 1px #A7CB24 solid;
+	border-radius: 5%;
+}
+
+/*我的订单*/
+
+.booklist2 {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+	position: relative;
+	top: 100px;
+	/*background-color: darkorange;*/
+}
+
+#table-order {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+	padding-top:20px;
+}
+
+#table-order .table-1 {
+	width: 450px;
+	height: 100px;
+	text-align: center;
+	margin: auto;
+}
+
+#table-order a:hover {
+	color: red;
+}
+
+#table-order .table-2 {
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+/*用户信息展示*/
+.user {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+	position: relative;
+	top: 100px;
+	/*background-color: darkorange;*/
+}
+
+/*用户注册*/
+.user-1 {	
+	width: 1000px;
+	height: 620px;
+	margin: auto;
+	/*background-color: aquamarine;*/
+}
+
+.user-1 h3 {
+	text-align: center;
+	padding-top: 50px;
+}
+
+.user-1 .p1 {
+	margin-top: 30px;
+}
+
+.user-1 p{
+	margin-left: 450px;
+	font-size: 14px;
+	margin-top: 12px;
+}
+
+.width-250 {
+	width: 250px;
+	height: 20px;
+	outline: none;
+}
+
+.submit {
+	width: 120px;
+	height: 30px;
+	border: 0;
+	background-color: #B2DC5D;
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+.submit:hover {
+	cursor: pointer;
+}
+
+.edit-user {
+	display:inline-block;
+	width: 100px;
+	height: 30px;
+	background-color: #868724;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+/******修改头像*******/
+.user-1 .user-p1 {
+	position: absolute;
+	top: 90px;
+	left: -85px;
+}
+
+.user-p1 img {
+	display: block;
+	width: 55px;
+	height: 55px;
+}
+
+.user-p1 a {
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+

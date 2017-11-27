@@ -1,0 +1,265 @@
+/*
+ * 棣栭儴銆佸熬閮�
+ * 鏁翠釜绔欑偣
+ * 鍏辩敤鏍峰紡
+ * 
+ * */
+
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+li {
+	list-style-type: none;
+}
+
+ul li{
+	display: inline-block;
+}
+
+/*************椤甸潰鎬绘鏋�************/
+.main{
+	width: 100%;
+	min-width: 1366px;
+	/*background-color: #B8860B;*/
+	margin: auto;
+}
+
+/************ 椤堕儴鏍峰紡 *************/
+.main .top {
+	width: 100%;
+	min-width: 1366px;
+	height: 50px;
+	position: fixed;
+	z-index: 10;
+	top: 0px;
+	background-color: cornflowerblue;
+}
+
+.top-leader {
+	background-color: #F2F2F2;
+}
+
+.top-leader-content {
+	width: 1366px;
+	margin: auto;
+}
+
+.top-p-1 {
+	line-height: 50px;
+	display: inline-block;
+	font-weight: bold;
+}
+
+.content-ul {
+	display: inline-block;
+	margin-left: 100px;
+}
+
+.content-ul li {
+	margin-left: 20px;
+}
+
+.content-ul li a {
+	width: 70px;
+	height: 48px;
+	display: inline-block;
+	line-height: 50px;
+	text-align: center;
+	border-bottom: 2px solid #F2F2F2;
+	/*background-color: darkgoldenrod;*/
+}
+
+.content-ul li a:hover {
+	border-bottom-color: red;
+}
+
+.top-p-2 {
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	/*background-color: red;*/
+	float: right;
+	display: inline-block;
+}
+
+.top-p-2 span a:hover {
+	color: red;
+}
+
+.top-p-3 {
+	width: 150px;
+	height: 50px;
+	line-height: 50px;
+	/*background-color: red;*/
+	float: right;
+	display: inline-block;
+}
+
+.top-p-3 img {
+	width: 30px;
+	height: 30px;
+	border-radius: 30px;
+	position: relative;
+	top: 9px;
+	left: -5px;
+}
+
+
+/**********灏鹃儴鏍峰紡**********/
+
+/*搴曢儴鏍峰紡*/
+#bottom {
+	height: 400px;
+	background-color: #F5F5F5;
+}
+
+#bottom-main {
+	width: 1180px;
+	/*background-color: cornflowerblue;*/
+	margin: auto;
+}
+
+#bottom-main-top {
+	width: 1180px;
+	height: 50px;
+	/*background-color: darkgoldenrod;*/
+}
+
+#bottom-main-top p {
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+/*搴曢儴涓棿閮ㄥ垎鏍峰紡*/
+#bottom-main-center {
+	width: 1180px;
+	height: 160px;
+	/*background-color: darkorange;*/
+}
+
+#bottom-main-center-logo {
+	width: 145px;
+	height: 160px;
+	/*background-color: red;*/
+	float: left;
+}
+
+#bottom-main-center-logo img {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#bottom-main-center-ul {
+	width: 821px;
+	height: 160px;
+	/*background-color: aquamarine;*/
+	float: left;
+	margin-top: 20px;
+}
+
+#ul-1 li{
+	width: 85px;
+	display: inline-block;
+	font-size: 14px;
+	margin-left: 50px;
+	/*background-color: red;*/
+	margin-top: 4px;
+}
+
+
+
+#ul-1 li a{
+	color: #999999;
+}
+
+#ul-1 li a:hover {
+	color: #FF8A81;
+}
+
+.ul-2 {
+	position: relative;
+	top:-20px;
+	/*margin-top: -10px;*/
+}
+
+.li-1 {
+	margin-bottom: 10px;
+}
+
+#bottom-main-center-ewm {
+	width: 214px;
+	height: 160px;
+	margin-top: 10px;
+	float: left;
+}
+
+#bottom-main-tel {
+	width: 488px;
+	height: 60px;
+	background:url(../img/fot_consult.jpg);
+	margin: auto;
+}
+
+/*搴曢儴鏈�搴曡竟鏍峰紡*/
+#bottom-footer {
+	width: 1180px;
+	/*height: 200px;*/
+}
+
+#bottom-footer ul {
+	text-align: center;
+}
+
+#ul-2 {
+	padding-top: 15px;
+}
+
+#bottom-footer ul li {
+	display: inline-block;
+	font-size: 13px;
+	color: #999999;
+}
+
+#bottom-footer ul li a {
+	color: #999;
+}
+
+#bottom-footer ul li a:hover {
+	color: #FF8A81;
+}
+
+#bottom-footer p{
+	text-align: center;
+	font-size: 13px;
+	color: #999;
+	margin-top: 10px;
+}
+
+#ul-3 {
+	margin-top: 20px;
+}
+
+#ul-3 li a img {
+	width: 110px;
+	height: 35px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

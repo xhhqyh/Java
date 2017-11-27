@@ -1,0 +1,315 @@
+/*************涓棿閮ㄥ垎鏍峰紡****************/
+.center {
+	width: 1366px;
+	min-height: 1100px;
+	/*background-color: darkseagreen;*/
+	margin: auto;
+	margin-top: 50px;
+}
+
+/*************鍥句功灞曠ず閮ㄥ垎鏍峰紡**************/
+.center-left {
+	width: 1050px;
+	height: 1030px;
+	/*background-color: darkturquoise;*/
+	float: left;
+}
+
+/**********鏂板埌鐗逛环涔︾簿閫夐儴鍒�***********/
+.left-new {
+	height: 250px;	
+}
+
+.center-left .left-p1 {
+	height: 50px;
+	line-height: 50px;
+	color: red;
+}
+
+.left-p1 a {
+	color: red;
+	font-size: 14px;
+	margin-left: 10px;
+}
+
+.newbook {
+	width: 1050px;
+	height: 200px;
+}
+
+.newbook ul li {
+	width: 260px;
+	height: 198px;
+	border: 1px solid #e6e6e6;
+	/*margin-left: -10px;*/
+	border-right: none;
+	float: left;
+	border-top-width: 2px;
+}
+
+.newbook ul li:last-child {
+	border-right: 1px solid #e6e6e6;
+}
+
+.newbook ul li:hover {
+	border-top-color: red;
+}
+
+.newbook ul li p {
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+.left-p2 {
+	font-size: 15px;
+}
+
+.left-p3 {
+	color: red;
+}
+
+.newbook ul li img {
+	width: 140px;
+	height: 140px;
+	position: relative;
+	z-index: 1;
+	top: -45px;
+	left: 100px;
+}
+
+.left-p4 {
+	position: relative;
+	z-index: 5px;
+	top: 80px;
+	font-size: 14px;
+}
+
+.left-p4 a:hover{
+	color: red;
+	
+}
+
+/********涔︾睄灞曠ず鏍峰紡************/
+.book {
+	height: 670px;
+}
+
+
+.booklist ul li {
+	width: 205px;
+	height: 320px;
+	/*border: 1px solid #e6e6e6;*/
+	/*margin-left: -10px;*/
+	border-right: none;
+	float: left;
+	border-top-width: 2px;
+}
+
+/*.booklist ul li:last-child {
+	border-right: 1px solid #e6e6e6;
+}*/
+
+.bookimg {
+	width: 180px;
+	margin: auto;
+}
+
+.booklist ul li img {
+	width: 180px;
+	height: 180px;
+}
+
+.bookimg p{
+	margin-left: 25px;
+	margin-top: 4px;
+}
+
+.left-p5 {
+	position: relative;
+	font-size: 14px;
+	z-index: 5px;
+	top: 5px;
+}
+
+.left-p5 a:hover{
+	color: red;
+	
+}
+
+/*********棣栭〉鍒嗛〉鏍峰紡**********/
+.page {
+	width: 800px;
+	height: 50px;
+}
+
+.page ul {
+	
+	margin-left:275px ;
+}
+
+.page ul li {
+	margin-left: 30px;
+}
+
+.page ul li a:hover{
+	color: red;
+}
+
+
+
+/**************涓棿鍙抽儴鍒嗘牱寮�**************/
+.center-right {
+	width: 300px;
+	height: 1100px;
+	background-color: #EAEAEA;
+	float: left;
+	padding-left: 16px;
+}
+
+
+/************公告展示**************/
+.notice {
+	height: 250px;
+	/* overflow: hidden; */
+	/*background-color: chartreuse;*/
+}
+
+.notice p {
+	height: 50px;
+	line-height: 50px;
+	width: 316px;
+	margin-left: -16px;
+	background-color: #5EADB1;
+	border-bottom: 1px solid #000;
+}
+
+.notice p a {
+	font-size: 14px;
+	margin-left: 180px;
+}
+
+.notice ul li {
+	display: block;
+	margin-top: 5px;
+	
+}
+
+.notice ul li a {
+	font-size: 14px;
+	margin-left: 5px;
+}
+
+.notice ul li a:hover {
+	color: red;
+}
+
+.notice ul li span {
+	float: right;
+}
+/*********购物车样式***********/
+.salecar {
+	height: 250px;
+	/* overflow: hidden; */
+	/*background-color: chartreuse;*/
+}
+
+.salecar p {
+	height: 50px;
+	line-height: 50px;
+	width: 316px;
+	margin-left: -16px;
+	background-color: #5EADB1;
+	border-bottom: 1px solid #000;
+}
+
+.salecar p a {
+	font-size: 14px;
+	margin-left: 180px;
+}
+
+
+
+/***********閿�鍞帓琛屾牱寮�***********/
+.saletop {
+	height: 350px;
+	/* overflow:hidden; */
+	/*background-color: limegreen;*/
+}
+
+.saletop p {
+	height: 50px;
+	line-height: 50px;
+	width: 316px;
+	margin-left: -16px;
+	background-color: #5EADB1;
+}
+
+.saletop p a {
+	font-size: 14px;
+	margin-left: 180px;
+}
+
+.saletop ul li {
+	height: 40px;
+	display: block;
+	width: 314px;
+	margin-left: -16px;
+	font-size: 14px;
+	/*margin-top: 10px;*/
+	line-height: 40px;
+	border: 1px solid #7A99AE;
+	border-top: none;
+	
+}
+
+.saletop ul li:first-child {
+	border-top: 1px solid #7A99AE;
+}
+
+.saletop ul li a {
+	margin-left: 10px;
+	
+}
+
+.saletop ul li a:hover {
+	color: red;
+}
+
+.author {
+	margin-left: 50px;
+}
+
+/***********鎶曠エ鏍峰紡************/
+.poll {
+	min-height: 300px ;
+	/*background-color: paleturquoise;*/
+}
+
+.poll-p1 {
+	height: 50px;
+	line-height: 50px;
+	width: 316px;
+	margin-left: -16px;
+	text-align: center;
+	border-bottom: 1px solid #000;
+	background-color: #5EADB1;
+}
+
+.poll-p2 {
+	margin: 10px 10px;
+	font-size: 14px;
+}
+
+.poll form p {
+	margin-top: 12px;
+	margin-left: 30px;
+}
+
+.input-1 {
+	width: 40px;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+
+

@@ -1,0 +1,25 @@
+/*后台顶部样式表*/
+#main {
+	height: 64px;
+	background: url(../img/admin/top-right.gif);
+}
+
+#main-img {
+	height: 64px;
+	float: left;
+}
+
+#main-p {
+	float: left;
+	margin: 10px 300px;
+}
+
+#main-p p {
+	color: #FFF;
+	font-size: 13px;
+}
+
+#out {
+	margin-left: 1350px;
+	margin-top: 10px;
+}

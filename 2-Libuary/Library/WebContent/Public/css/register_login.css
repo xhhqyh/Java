@@ -1,0 +1,131 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+li {
+	list-style-type: none;
+	display: inline-block;
+}
+
+/********总框架********/
+.main {
+	width: 100%;
+	min-width: 1366px;
+	height: 900px;
+	/*background-color: darkgoldenrod;*/
+}
+
+/*******顶部样式*******/
+.top {
+	height: 50px;
+	background-color: #F5F5F5;
+}
+
+.top p {
+	width: 1366px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	margin: auto;
+	/*background-color: red;*/
+}
+
+
+/*******注册样式********/
+#top-1-ul2 {
+	width: 232px;
+	height: 55px;
+	line-height: 55px;
+	float: left;
+}
+
+#top-1-ul2 ul li a{
+	font-size: 14px;
+}
+
+#top-1-ul2 ul li a:hover {
+	color: red;
+}
+/*----------------------------*/
+/*用户注册*/
+#zhuce {	
+	width: 1200px;
+	height: 620px;
+	margin: auto;
+	/*background-color: aquamarine;*/
+}
+
+#zhuce h3 {
+	text-align: center;
+	padding-top: 50px;
+}
+
+#zhuce .p1 {
+	margin-top: 30px;
+}
+
+#zhuce p{
+	margin-left: 415px;
+	font-size: 14px;
+	margin-top: 12px;
+}
+
+.width-250 {
+	width: 250px;
+	height: 20px;
+	outline: none;
+}
+
+.submit {
+	width: 120px;
+	height: 30px;
+	border: 0;
+	background-color: #B2DC5D;
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+.submit:hover {
+	cursor: pointer;
+}
+
+.edit-user {
+	display:inline-block;
+	width: 100px;
+	height: 30px;
+	background-color: #868724;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
