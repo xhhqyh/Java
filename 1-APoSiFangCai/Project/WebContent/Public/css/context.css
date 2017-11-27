@@ -1,0 +1,79 @@
+#background {
+	background-color: #ECF1F9;
+	width: 100%
+}
+
+#body {
+	background-image: url(../img/login-content-bg.gif);
+	background-size: 1800px 100%;
+}
+
+#title {
+	background-image: url(../img/top_bt.jpg);
+	width: 85px;
+	height: 29px;
+	text-align: center;
+}
+
+#title p {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 10px;
+	font-weight: 700;
+	margin-top: 7px;
+}
+
+#top {
+	height: 31px;
+}
+
+#top div {
+	float: left;
+}
+
+#top_body {
+	width: 90%;
+}
+#top_body img{
+	width: 100%;
+}
+
+#middle {
+	margin-top: -1px;
+	margin-left: 7px;
+	height: 60%;
+	padding: 0px;
+	width: auto;
+	background-color: ;
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+	border-bottom: 2px solid gray;
+	border-radius: 0 0 calc(5px) calc(5px);
+}
+
+#middle table {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 14px;
+	width: 90%;
+	margin: auto auto;
+	line-height: 20px;
+	text-align: center;
+	border-color: black;
+	border-radius: calc(5px);
+}
+.head{
+	font-weight: 800;
+}
+.left {
+	font-family: "Î¢ÈíÑÅºÚ";
+	font-size: 14px;
+	font-weight: 900;
+	text-align: right;
+	width: 400px;
+}
+.right{
+	text-align: left;
+}
+.right input {
+	border-width: 0;
+	border: 1px solid gainsboro;
+}

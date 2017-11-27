@@ -1,0 +1,317 @@
+/*閫氶厤绗﹂�夋嫨鍣�*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul li{
+	list-style: none;
+	display: inline-block;
+}
+
+a{
+	text-decoration: none;
+	color: #000000;
+}
+
+/*涓讳綋妗嗘灦*/
+#main {
+	width: 1420px;
+	height: 750px;
+	margin: auto;
+}
+
+/*涓�銆佸ご閮�*/
+#top {
+	width: 1420px;
+	height: 55px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	position: relative;
+	
+}
+
+/*澶撮儴-瀵艰埅*/
+#top-1 {
+	width: 1420px;
+	height: 55px;
+	background-color: gainsboro;
+	position: fixed;
+	z-index: 5;
+	opacity: 0.8;
+}
+
+#top-1 #top-1-img {
+	float: left;
+}
+
+#top-1 #top-1-ul {
+	width: 1000px;
+	height: 55px;
+	line-height: 55px;
+	margin-left: 50px;
+	float: left;
+}
+
+#top-1-ul ul {
+	padding-left: 100px;
+}
+
+#top-1-ul ul li {
+	width: 80px;
+	height: 55px;
+	text-align: center;
+	margin-left: -9px;
+}
+
+#top-1-ul ul li a {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+#top-1-ul ul li a:hover {
+	background-color: #B2DC5D;
+}
+
+/*鐧诲綍锛屾敞鍐�*/
+#top-1-ul2 {
+	width: 232px;
+	height: 55px;
+	line-height: 55px;
+	float: left;
+}
+
+#top-1-ul2 ul li a{
+	font-size: 14px;
+}
+
+#top-1-ul2 ul li a:hover {
+	color: red;
+}
+
+/*鐢ㄦ埛娉ㄥ唽*/
+#zhuce {	
+	width: 1200px;
+	height: 620px;
+	margin: auto;
+	/*background-color: aquamarine;*/
+}
+
+
+#zhuce h3 {
+	text-align: center;
+	padding-top: 50px;
+}
+
+#zhuce .p1 {
+	margin-top: 30px;
+}
+
+#zhuce p{
+	margin-left: 415px;
+	font-size: 14px;
+	margin-top: 12px;
+}
+
+.User p {
+	padding-left: 90px;
+}
+
+.width-250 {
+	width: 250px;
+	height: 20px;
+	outline: none;
+}
+
+.submit {
+	width: 120px;
+	height: 30px;
+	border: 0;
+	background-color: #B2DC5D;
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+.submit:hover {
+	cursor: pointer;
+}
+
+.edit-user {
+	display:inline-block;
+	width: 100px;
+	height: 30px;
+	background-color: #868724;
+	line-height: 30px;
+	text-align: center;
+	font-size: 18px;
+	border-radius: 20px;
+}
+
+/*鐢ㄦ埛鐧诲綍*/
+
+/*璁㈤淇℃伅鍒楄〃*/
+#table-car {
+	width: 500px;
+	height: 570px;
+	margin: auto;
+}
+
+#table-car,#send h3,#notice h3,#notice-content h3 {
+	padding-top: 50px;
+	text-align: center;
+}
+
+#table-car table {
+	width: 600px;
+	/* height: 200px; */
+	margin-top: 40px;
+	margin-left: -50px;
+	text-align: center;
+}
+
+.border-1px {
+	height: 25px;
+	width: 80px;
+	margin: auto;
+	line-height: 25px;
+	display: inline-block;
+	background-color: #A7CB24;
+	border: 1px #A7CB24 solid;
+	border-radius: 5%;
+}
+
+/*閰嶉�佹寚鍗�*/
+#send {
+	width: 800px;
+	height: 620px;
+	margin: auto;
+}
+
+#send .send-p {
+	font-size: 15px;
+	margin-top: 25px;
+	mar
+}
+
+#send p {
+	margin-left: 50px;
+}
+
+#send p span {
+	color: red;
+	margin-left: 10px;
+	font-weight: 500;
+}
+
+.send-p-6 {
+	margin-top: ;
+}
+
+/*公告信息*/
+#notice {
+	width: 600px;
+	height: 620px;
+	margin: auto;
+	/* background-color: aquamarine; */
+}
+
+#notice .send-p {
+	font-size: 15px;
+	margin-top: 25px;
+	mar
+}
+
+#notice p {
+	margin-left: 100px;
+}
+
+#notice p a:hover {
+	color: red;
+}
+
+#notice p span {
+	font-weight: 500;
+}
+
+.notice-time{
+	margin-right: 30px;
+	float:right;
+}
+
+/*公告内容页样式*/
+#notice-content {
+	width: 1000px;
+	height: 620px;
+	margin: auto;
+   /*  background-color: aquamarine;  */
+}
+
+#notice-content .send-p {
+	font-size: 15px;
+	margin-top: 100px;
+}
+
+#notice-content p {
+	margin-left: 100px;
+}
+
+#notice-content p span {
+	font-weight: 500;
+}
+
+.notice-content{
+	margin-right: 30px;
+	/* float:right; */
+}
+
+/*鎴戠殑璁㈠崟*/
+#table-order {
+	width: 1000px;
+	height: 600px;
+	margin: auto;
+	padding-top:20px;
+}
+
+#table-order .table-1 {
+	width: 450px;
+	height: 100px;
+	text-align: center;
+	margin: auto;
+}
+
+#table-order a:hover {
+	color: red;
+}
+
+#table-order .table-2 {
+	width: 1000px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+/*搴曢儴*/
+#bottom-3 {
+	width: 1420px;
+	height: 100px;
+	background-color: #868724;
+}
+
+#bottom-3-1 {
+	width: 600px;
+	height: 100px;
+	padding-left: 50px;
+	float: left;
+}
+
+#bottom-3-1 p {
+	font-size: 15px;
+	padding-top: 45px;
+}
+
+#bottom-3-2 {
+	width: 100px;
+	height: 100px;
+	margin-right: 150px;
+	float: right;
+}

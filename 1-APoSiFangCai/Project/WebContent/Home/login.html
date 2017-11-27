@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户登录</title>
+		<link rel="stylesheet" type="text/css" href="../Public/css/login.css"/>
+	</head>
+	<body>
+		<!--主体框架-->
+		<div id="main">
+			
+			<!--头部-->
+			<div id="top">
+				<div id="top-1">
+					<!--头部导航-->
+					<div id="top-1-img">
+						<img src="../Public/img/Home/1257477260.gif"/>
+					</div>
+					<div id="top-1-ul">
+						<ul>
+							<li><a href="index.jsp">首页</a></li>
+							<li><a href="eatcar.jsp">我的餐车</a></li>
+							<li><a href="order.jsp">我的订单</a></li>
+							<li><a href="User.jsp">用户中心</a></li>
+							<li><a href="send.jsp">配送说明</a></li>
+							<li><a href="index.jsp#bottom">关于我们</a></li>
+						</ul>
+					</div>
+					<!--登录注册-->
+					<div id="top-1-ul2">
+						<ul>
+							<li><p><a href="login.html">登录&nbsp;</a>|</p></li>
+							<li><p><a href="zhuce.html">&nbsp;注册</a></p></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<!--注册-->
+			<div id="zhuce">
+				<form action="./DataOperate/Check_login.jsp" method="post" onSubmit="return check();">
+					<h3 class="set-h3">用户登录</h3>
+					<p class="p1"><span>用户名：</span><input type="text" name="username" class="width-250" required aria-required="true" id="user-name" placeholder="请输入用户名" value="" onblur="checkUserName()"/>&nbsp;<span id="nameInfo"></span></p>
+					<p><span>密&nbsp;码：</span><input type="password" name="password" class="width-250" required aria-required="true" id="password" placeholder="请输入密码" value="" onblur="checkPassword()"/>&nbsp;<span id="passwordInfo"></span></p>
+					
+					<p><input type="submit" name="" id="" class="submit" value="登录" />
+					<input type="reset" name="" id="" class="submit" value="重置" /></p>
+				</form>
+			</div>
+			
+			<div id="bottom-3">
+					<div id="bottom-3-1">
+						<p>&copy;阿婆私房菜|电话：0317-154862|地址:武汉软件园</p>
+					</div>
+					<div id="bottom-3-2">
+						<!--<img src="../Public/img/Home/2017-07-17_185137.jpg"/>-->
+					</div>
+				</div>
+		</div>
+	</body>
+<script type="text/javascript" src="../Public/Js/Login_Admin.js"></script>
+</html>
