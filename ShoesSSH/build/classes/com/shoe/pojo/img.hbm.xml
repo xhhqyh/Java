@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	 <class name="com.shoe.pojo.Img" table="t_img">
+		<id name="imgId" column="img_id">
+			<generator class="sequence">
+				<param name="sequence_name">img_seq</param>
+			</generator>
+		</id>
+		<property name="goodsId" column="goods_id"></property>
+		<property name="imgUrl" column="img_url"></property>
+		
+	</class>
+	
+
+</hibernate-mapping>
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- add by gx 2018.1.11 -->
+<hibernate-mapping package="com.shoe.pojo">
+	<class name="Role" table="t_role">
+		<id name="roleId" column="role_id">
+			<generator class="sequence">
+				<param name="sequence_name">
+					role_seq
+				</param>
+			</generator>
+		</id>
+		<property name="roleName" column="role_name"></property>
+		<property name="roleInformation" column="role_information"></property>
+	</class>
+
+
+</hibernate-mapping>        

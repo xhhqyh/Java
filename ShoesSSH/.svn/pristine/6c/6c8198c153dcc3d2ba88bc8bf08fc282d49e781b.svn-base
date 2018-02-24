@@ -1,0 +1,13 @@
+
+#index{
+	width: 1720px;
+	height: 913px;
+	background-color: #F0F9FD;
+	/* background: url(../img/indexs.jpg) no-repeat scroll top left; */
+}
+
+#center{
+	position: absolute;
+	left: 520px;
+	top: 320px;
+}

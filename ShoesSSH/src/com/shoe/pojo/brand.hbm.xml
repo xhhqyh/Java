@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	 <class name="com.shoe.pojo.Brand" table="t_brand">
+		<id name="brandId" column="brand_id">
+			<generator class="sequence">
+				<param name="sequence_name">brand_seq</param>
+			</generator>
+		</id>
+		<property name="brandName" column="brand_name"></property>
+		<property name="brandGender" column="brand_gender"></property>
+		<property name="brandRemarks" column="brand_remarks"></property>
+	</class>
+	
+
+</hibernate-mapping>
+

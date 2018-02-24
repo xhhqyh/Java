@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- 自动扫描与装配bean -->      
+    <context:component-scan base-package="com.shoe"></context:component-scan>    
+
+	<!-- 配置数据源 -->
+	<bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+	    <property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+	    <property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.10.118:1521:four"/>
+	    <property name="user" value="qyh"/>
+	    <property name="password" value="123456"/>
+	</bean>
+		
+	<!-- 集成hibernate  -->
+    <bean id="mySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource"/>
+       <!--  <property name="mappingResources">
+            <list>
+                <value>com/hp/pojo/user.hbm.xml</value>
+            </list>
+        </property> -->
+        <property name="hibernateProperties">
+            <props>
+            	<!-- 打印sql -->
+				<prop key="hibernate.show_sql">true</prop>
+            	<!-- 设置数据方言 -->
+            	<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+            	<!-- 将session设置为线程级session -->
+            	<prop key="Hibernate.current_session_context_class">
+					org.springframework.orm.hibernate5.SpringSessionContext
+				</prop>
+            </props>
+        </property>
+        
+        <!--自动扫描实体 -->    
+        <property name="packagesToScan"  value="com.shoe.pojo" />
+    </bean>
+	
+	<!-- 事务管理器 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="mySessionFactory"/>
+    </bean>
+	
+	<!-- 事务型通知 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+        	<!-- 以get,add开头的方法加入事务 -->
+            <tx:method name="get*" propagation="REQUIRED"/>
+            <tx:method name="add*" propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    
+    <!-- 定义切面用于植入事务 -->
+   	<aop:config>
+        <aop:pointcut id="point" expression="execution(* com.shoe.service.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="point"/>
+    </aop:config>
+   
+ </beans>

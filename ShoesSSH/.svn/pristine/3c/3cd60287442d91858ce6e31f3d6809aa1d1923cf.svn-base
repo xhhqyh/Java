@@ -1,0 +1,183 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>管理员账户管理</title>
+<link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+<script type="text/javascript" src="easyUI/jquery.min.js"></script>
+<script type="text/javascript" src="easyUI/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyUI/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<table id = "userDg" class="easyui-datagrid" title="用户列表" style="width:1570px;height:770px"
+	data-options="rownumbers:true,
+				  singleSelect:false,
+				  collapsible:true,
+				  url:'manager!getManagerList',
+				  method:'get',
+				  pagination:true,
+				  pageSize:5,
+				  pageList:[2,3,4,5],
+				  toolbar: '#userTB'
+				  ">
+	<thead>
+		<tr>
+			<th data-options="field:'ck',checkbox:true"></th>
+			<th data-options="field:'managerId',width:150,align:'right',hidden:true">ID</th>
+			<th data-options="field:'managerName',width:300">管理员账户</th>
+			<th data-options="field:'managerPwd',width:300">管理员密码</th>
+			<th data-options="field:'managerRemark',width:300">管理员备注</th>
+			<th data-options="field:'role',width:200,formatter:formatRole">管理员级别</th>
+			
+		</tr>
+	</thead>
+</table>
+
+<div id = "userTB" style="height:auto">
+	<div>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:'true',text:'新增角色'" onclick="openWin(1)"></a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:'true',text:'编辑角色'" onclick="openWin(2)"></a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:'true',text:'删除角色'" onclick="deleteManager()"></a>
+	</div>
+</div>
+
+<div id="addUserWin" class="easyui-dialog" title="新增管理" data-options="iconCls:'icon-save',closed: true,modal: true" style="width:400px;height:350px;padding:10px">
+	<form id="userForm" method="post" action = "manager!addManager">
+		<table cellpadding="5">
+	    		<tr>
+	    			<td>用户:</td>
+	    			<td><input id="managerId" type="hidden" name="managerVO.managerId">
+	    				<input id="managerName" class="easyui-textbox" name="managerVO.managerName" data-options="required:true,width:220"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>用户密码</td>
+	    			<td>
+	    				<input id="managerPwd" class="easyui-textbox" name="managerVO.managerPwd" type="password" data-options="required:true,width:220"/>
+	    			</td>
+	    		</tr>
+	    		
+	    		<tr>
+	    			<td>用户备注</td>
+	    			<td>
+	    				<input id="managerRemark" class="easyui-textbox" name="managerVO.managerRemark" data-options="required:true,width:220"/>
+	    			</td>
+	    		</tr>
+	    		
+	    		<tr>
+	    			<td>用户角色</td>
+	    			<td>
+	    				<input class="easyui-combobox" id="roleName" name="managerVO.roleId" data-options="valueField:'roleId',textField:'roleName',url:'role!getAllRole',required:true,missingMessage:'不能为空'" />
+	    				<!-- <input id="roleName" class="easyui-textbox" name="user.role.roleName" data-options="required:true,width:220"/> -->
+	    			</td>
+	    		</tr>
+	    		
+	    		
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清空</a>
+	    </div>
+</div>
+
+<script type="text/javascript">
+	var url = "";
+	function formatRole(value, row, index){
+		if(value!=null){
+			return value.roleName;
+		}else{
+			return '无';
+		}
+	}
+	function openWin(flag) {
+		$('#userForm').form('clear');
+		if(flag !=1){
+			var chkRows = $('#userDg').datagrid('getChecked');
+			if (chkRows.length == 1){
+				$('#managerId').val(chkRows[0].managerId);
+				$('#managerName').textbox("setValue",chkRows[0].managerName);
+				$('#managerPwd').textbox("setValue",chkRows[0].managerPwd);
+				$('#managerRemark').textbox("setValue",chkRows[0].managerRemark);
+				$('#roleName').combobox("setValue",chkRows[0].role.roleName);
+				$('#addUserWin').dialog('open')
+			}else {
+				$.messager.show({
+					title : '注意',
+					msg : '请选择单行进行修改',
+					showType : 'slide',
+					timeout : 2000,
+					style : {
+						right : '',
+						top : document.body.scrollTop
+								+ document.documentElement.scrollTop,
+						bottom : ''
+					}
+				});
+			}
+		}else{
+			$('#addUserWin').dialog('open')
+		}
+	}
+
+	function submitForm() {
+		$('#userForm').form({
+			success : function(data) {
+				$('#addUserWin').dialog('close');
+				$("#userDg").datagrid("load");
+			}
+		});
+		$('#userForm').form('submit');
+	}
+
+	function deleteManager() {
+		var chkRows = $('#userDg').datagrid('getChecked');
+		alert(chkRows.length);
+		if(chkRows.length>0){
+			var resId =[];
+			for (var i = 0; i < chkRows.length; i++) {
+				resId[i] = chkRows[i].managerId; 
+				alert(resId[i]);
+			}
+			$.ajax({
+				url : "manager!deleteManager",
+				method : "post",
+				data : {
+					resId : resId
+				},
+				dataType : "json",
+				traditional:true,
+				success : function(result) {
+					var isOk = result.isOk;
+					//如果删除成功进行刷新
+					if (isOk) {
+						$("#userDg").datagrid("reload");
+					}
+					
+				}
+			})
+			
+			
+		}else {
+			$.messager.show({
+				title : '注意',
+				msg : '请选择删除的数据',
+				showType : 'slide',
+				timeout : 2000,
+				style : {
+					right : '',
+					top : document.body.scrollTop
+							+ document.documentElement.scrollTop,
+					bottom : ''
+				}
+			});
+		}
+	}
+
+</script>
+
+</body>
+</html>

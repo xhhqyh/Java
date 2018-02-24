@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+    
+<struts>
+	<!-- 开启使用开发模式，详细错误提示 -->    
+    <constant name="struts.devMode" value="true" />    
+    <!-- 将对象交给spring管理 -->    
+    <constant name="struts.objectFactory" value="spring" />    
+    <!-- 指定资源编码类型 -->    
+    <constant name="struts.i18n.encoding" value="UTF-8" />     
+    <!-- 指定每次请求到达，重新加载资源文件 -->    
+    <constant name="struts.i18n.reload" value="false" />    
+    <!-- 指定每次配置文件更改后，自动重新加载 -->    
+    <constant name="struts.configuration.xml.reload" value="false" />    
+    <!-- 默认后缀名 -->    
+    <constant name="struts.action.extension" value="action," />
+    <!-- 修改上传文件大小 -->
+    <constant name="struts.multipart.maxSize" value="5242880"></constant>
+    
+	<constant name="struts.configuration.xml.reload" value="true"></constant>
+    
+   	<!-- 动态方法调用
+	 访问url以  actionName!methodName?param=x1&param=x2.....
+	-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	
+	 <package name="user" namespace="/" extends="struts-default">
+	 	<!--管理员-->
+	 	<action name="manager" class="com.shoe.action.ManagerAction">
+    		<result name="returnData" type="stream">
+    			<param name="contentType">application/json</param>
+		  	    <param name="inputName">returnData</param>
+    		</result>
+    		
+    	</action>
+	 	<!-- 菜单权限 -->
+	 	<action name="menu" class="com.shoe.action.MenuAction"></action>
+	 	<!--  角色 -->
+	 	<action name="role" class="com.shoe.action.RoleAction">
+    		<result name="returnData" type="stream">
+	             <param name="contentType">application/json</param>
+		  	     <param name="inputName">returnData</param>           
+          	</result>
+    	</action>
+	 
+	 
+	   <!-- 广告  -->
+		<action name="adv" class="com.shoe.action.AdvAction">
+			<result name="success" type="stream">
+			    <param name="contentType">application/json</param>
+			    <param name="inputName">returnData</param>
+			</result>
+		</action>
+		
+		 <!-- 商务合作  -->
+		<action name="cooper" class="com.shoe.action.CooperAction">
+			<result name="success" type="stream">
+			    <param name="contentType">application/json</param>
+			    <param name="inputName">returnData</param>
+			</result>
+		</action>
+		
+		<!-- 商品 -->
+		<action name="goods" class="com.shoe.action.GoodsAction">
+			<result name="success" type="stream">
+			    <param name="contentType">application/json</param>
+			    <param name="inputName">returnData</param>
+			</result>
+		</action>
+		
+		<!-- 用户 -->
+		<action name="getUser" class="com.shoe.action.UserAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">data</param>
+			</result>
+		</action>
+		<!-- 商品类型 -->
+		<action name="type" class="com.shoe.action.TypeAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">returnData</param>
+			</result>
+		</action>
+		<!-- 商品品牌 -->
+		<action name="brand" class="com.shoe.action.BrandAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">returnData</param>
+			</result>
+		</action>
+		<!-- 商品图片 -->
+		<action name="img" class="com.shoe.action.ImgAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">returnData</param>
+			</result>
+		</action>
+		<!-- 订单 -->
+		<action name="getOrder" class="com.shoe.action.OrderAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">data</param>
+			</result>
+		</action>
+		
+		<!-- 咨询评论 -->
+		<action name="evalute" class="com.shoe.action.EvaluteAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">returnData</param>
+			</result>
+		</action>
+		
+		<!-- 报表管理 -->
+		<action name="echarts" class="com.shoe.action.EchartsAction">
+			<result name="success" type="stream">
+				<param name="contentType">application/json</param>
+				<param name="inputName">returnData</param>
+			</result>
+		</action>
+		
+	</package>
+	
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	 <class name="Reserve" table="t_reserve">
+		<id name="reserveId" column="RESERVE_ID">
+			<generator class="sequence">
+				<param name="sequence_name">reserve_seq</param>
+			</generator>
+		</id>		
+		<property name="reserveTime" column="RESERVE_TIME"></property>
+		<property name="reserveStatus" column="RESERVE_STATUS"></property>
+		<property name="reserveType" column="RESERVE_TYPE"></property>
+		<property name="reserveNum" column="RESERVE_NUM"></property>
+		<property name="reserveNo" column="RESERVE_NO"></property>
+
+		
+		<many-to-one name="recive" class="Recive" column="RECIVE_ID" cascade="all"></many-to-one>	
+		<many-to-one name="user" class="User" column="USER_ID" cascade="all"></many-to-one>	
+	</class>
+	<!--  修改增加商品XML
+	<class name="com.shoe.pojo.GoodsTwo" table="t_goods">
+		<id name="goodsId" column="goods_id">
+			<generator class="sequence">
+				<param name="sequence_name">goods_seq</param>
+			</generator>
+		</id>
+		<property name="typeId" column="type_Id"></property>
+		<property name="brandId" column="brand_Id"></property>		
+		<property name="goodsNo" column="goods_no"></property>
+		<property name="goodsName" column="goods_name"></property>
+		<property name="goodsPrice" column="goods_price"></property>
+		<property name="goodsDate" column="goods_date"></property>
+		<property name="goodsProducer" column="goods_producer"></property>
+		<property name="goodsStyle" column="goods_style"></property>
+		<property name="goodsInformation" column="goods_informantion"></property>
+		<property name="goodsSnumber" column="goods_snumber"></property>
+		<property name="goodsDiscount" column="goods_discount"></property>
+		<property name="goodsPoint" column="goods_point"></property>
+		<property name="goodsStatus" column="goods_status"></property>				
+	</class> -->
+
+</hibernate-mapping>
+

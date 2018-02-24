@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- add by gx 2018.1.11 -->
+<hibernate-mapping package="com.shoe.pojo">
+	<class name="Menu" table="t_menu">
+		<id name="menuId" column="menu_id">
+			<generator class="sequence">
+				<param name="sequence_name">
+					menu_seq
+				</param>
+			</generator>
+		</id>
+		<property name="menuName" column="menu_name"></property>
+		<property name="menuPid" column="menu_pid"></property>
+		<property name="menuUrl" column="menu_url"></property>
+	</class>
+
+</hibernate-mapping>

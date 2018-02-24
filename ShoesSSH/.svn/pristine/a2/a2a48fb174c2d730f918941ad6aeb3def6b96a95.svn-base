@@ -1,0 +1,95 @@
+package com.shoe.service;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.shoe.dao.CustomizeDao;
+import com.shoe.pojo.Customize;
+import com.shoe.pojo.Goods;
+import com.shoe.pojo.Size;
+import com.shoe.pojo.Type;
+
+/**
+ * 定制鞋
+ * add by zrh 2018年1月17日 上午11:25:58
+ *
+ */
+@Service  
+@Transactional
+public class CustomizeServiceImpl implements CustomizeService {
+	
+	@Resource
+	private CustomizeDao customizeDao;
+	
+	/**
+	 * 定制鞋查询
+	 * @param currentPage
+	 * @param pageSize
+	 */
+	public Map<String, Object> getCustomizeList(int currentPage, int pageSize,String customizeCards) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		try {
+			long customizeCount = customizeDao.getCount();
+			List<Customize> CustomizeList = customizeDao.getCustomizeInfo(currentPage, pageSize,customizeCards);
+			data.put("total", customizeCount);
+			data.put("rows", CustomizeList);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return data;
+	}
+	
+	/**
+	 * 添加或修改
+	 * @param customize 定制鞋的信息
+	 */
+	@Override
+	public boolean addCustomize(Customize customize) {
+		boolean isOk = true;
+		try {
+			customizeDao.addCustomize(customize);
+		} catch (Exception e) {
+			isOk = false;
+			e.printStackTrace();
+		}
+		return isOk;
+	}
+
+	/**
+	 * 删除
+	 * @param customizeIds 选中数据的总ID
+	 */
+	@Override
+	public boolean deleteCustomize(List<Integer> customizeIds) {
+		boolean isOk = true;
+		try {
+			customizeDao.deleteCustomize(customizeIds);
+		} catch (Exception e) {
+			isOk = false;
+			e.printStackTrace();
+		}
+		return isOk;
+	}
+
+	/**
+	 * 返回鞋子所有尺寸
+	 */
+	@Override
+	public List<Size> getSizeName() {
+		List<Size> sizeList = null;
+		try {
+			sizeList = customizeDao.getSize();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sizeList;
+	}
+
+
+}

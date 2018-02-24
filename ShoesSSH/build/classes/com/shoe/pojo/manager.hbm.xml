@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- add by gx 2018.1.11 -->
+<hibernate-mapping package="com.shoe.pojo">
+	<class name="Manager" table="t_manager">
+		<id name="managerId" column="manager_id">
+			<generator class="sequence">
+				<param name="sequence_name">
+					manager_seq
+				</param>
+			</generator>
+		</id>
+		<property name="managerName" column="manager_name"></property>
+		<property name="managerPwd" column="manager_pwd"></property>
+		<property name="managerRemark" column="manager_remark"></property>
+		<many-to-one name="role" class="Role" column="role_id" cascade="none" lazy="false"></many-to-one>
+	</class>
+
+	<class name="ManagerVO" table="t_manager">
+		<id name="managerId" column="manager_id">
+			<generator class="sequence">
+				<param name="sequence_name">
+					manager_seq
+				</param>
+			</generator>
+		</id>
+		<property name="managerName" column="manager_name"></property>
+		<property name="managerPwd" column="manager_pwd"></property>
+		<property name="managerRemark" column="manager_remark"></property>
+		<property name="roleId" column="role_id"></property>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	 <class name="com.shoe.pojo.Goods" table="t_goods">
+		<id name="goodsId" column="goods_id">
+			<generator class="sequence">
+				<param name="sequence_name">goods_seq</param>
+			</generator>
+		</id>		
+		<property name="goodsNo" column="goods_no"></property>
+		<property name="goodsName" column="goods_name"></property>
+		<property name="goodsNewPrice" column="goods_newprice"></property>
+		<property name="goodsOldPrice" column="goods_oldprice"></property>
+		<property name="goodsDate" column="goods_date"></property>
+		<property name="goodsProducer" column="goods_producer"></property>
+		<property name="goodsStyle" column="goods_style"></property>
+		<property name="goodsInformation" column="goods_informantion"></property>
+		<property name="goodsSnumber" column="goods_snumber"></property>
+		<property name="goodsDiscount" column="goods_discount"></property>
+		<property name="goodsPoint" column="goods_point"></property>
+		<property name="goodsStatus" column="goods_status"></property>
+		<property name="goodsImgUrl" column="goods_imgurl"></property>	
+		<!-- 多对一级联关系 -->
+		<many-to-one name="type" class="Type" column="type_Id" cascade="none" fetch="join" lazy="false"></many-to-one>	
+		<many-to-one name="brand" class="Brand" column="brand_Id" cascade="none" fetch="join" lazy="false"></many-to-one>	
+		
+		<!-- 一对多  图片表 -->
+		<set name="imgs" cascade="save-update" lazy="false">
+			<key column="goods_id"></key>
+			<one-to-many class="Img"/>
+		</set>
+		
+		<!-- 一对多 库存表 -->
+		<set name="stocks" cascade="save-update" lazy="false">
+			<key column="goods_id"></key>
+			<one-to-many class="Stock"/>
+		</set>
+		
+	</class>
+	<!-- 修改增加商品XML -->
+	<class name="com.shoe.pojo.GoodsTwo" table="t_goods">
+		<id name="goodsId" column="goods_id">
+			<generator class="sequence">
+				<param name="sequence_name">goods_seq</param>
+			</generator>
+		</id>
+		<property name="typeId" column="type_Id"></property>
+		<property name="brandId" column="brand_Id"></property>		
+		<property name="goodsNo" column="goods_no"></property>
+		<property name="goodsName" column="goods_name"></property>
+		<property name="goodsOldPrice" column="goods_oldprice"></property>
+		<property name="goodsNewPrice" column="goods_newprice"></property>
+		<property name="goodsDate" column="goods_date"></property>
+		<property name="goodsProducer" column="goods_producer"></property>
+		<property name="goodsStyle" column="goods_style"></property>
+		<property name="goodsInformation" column="goods_informantion"></property>
+		<property name="goodsSnumber" column="goods_snumber"></property>
+		<property name="goodsDiscount" column="goods_discount"></property>
+		<property name="goodsPoint" column="goods_point"></property>
+		<property name="goodsStatus" column="goods_status"></property>	
+		<property name="goodsImgUrl" column="goods_imgurl"></property>			
+	</class>
+
+</hibernate-mapping>
+

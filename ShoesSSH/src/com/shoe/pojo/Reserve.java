@@ -1,0 +1,100 @@
+package com.shoe.pojo;
+
+/**
+ * 订单表(t_reserve)
+ * 
+ * @author 李杨
+ *
+ * @param reserveId
+ *            Integer 订单编号,主键标识符
+ * @param goods
+ *            Goods 商品信息
+ *            @see Goods 商品
+ * @param user
+ *            User 用户信息 
+ *            @see User 客户
+ * @param recive
+ *            Recive 收货信息
+ *            @see Recive 收货地址
+ * @param reserveTime
+ *            String 下单时间,(默认sysdate)
+ * @param reserveStatus
+ *            Integer 状态(0:代发货,1:待签中,2:交易成功,3:申请退货,4:退货成功)
+ * @param reserveNum
+ *            Integer 订购商品数量
+ * @param reserveType
+ *            Integer 积分商品标示(0:不是,1:是) )
+ */
+public class Reserve {
+	private Integer reserveId;
+	private Goods goods;
+	private User user;
+	private Recive recive;
+	private String reserveTime;
+	private Integer reserveStatus;
+	private Integer reserveNum;
+	private Integer reserveType;
+	private String reserveNo;
+	
+	public Integer getReserveId() {
+		return reserveId;
+	}
+	public void setReserveId(Integer reserveId) {
+		this.reserveId = reserveId;
+	}
+	public Goods getGoods() {
+		return goods;
+	}
+	public void setGoods(Goods goods) {
+		this.goods = goods;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public Recive getRecive() {
+		return recive;
+	}
+	public void setRecive(Recive recive) {
+		this.recive = recive;
+	}
+	public String getReserveTime() {
+		return reserveTime;
+	}
+	public void setReserveTime(String reserveTime) {
+		this.reserveTime = reserveTime;
+	}
+	public Integer getReserveStatus() {
+		return reserveStatus;
+	}
+	public void setReserveStatus(Integer reserveStatus) {
+		this.reserveStatus = reserveStatus;
+	}
+	public Integer getReserveNum() {
+		return reserveNum;
+	}
+	public void setReserveNum(Integer reserveNum) {
+		this.reserveNum = reserveNum;
+	}
+	public Integer getReserveType() {
+		return reserveType;
+	}
+	public void setReserveType(Integer reserveType) {
+		this.reserveType = reserveType;
+	}
+	public String getReserveNo() {
+		return reserveNo;
+	}
+	public void setReserveNo(String reserveNo) {
+		this.reserveNo = reserveNo;
+	}
+	@Override
+	public String toString() {
+		return "Reserve [reserveId=" + reserveId + ", reserveTime=" + reserveTime + ", reserveStatus=" + reserveStatus
+				+ ", reserveNum=" + reserveNum + ", reserveType=" + reserveType + ", reserveNo=" + reserveNo + "]";
+	}
+	
+
+}

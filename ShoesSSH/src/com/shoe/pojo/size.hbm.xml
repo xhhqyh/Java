@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	<class name="Size" table="t_size">
+		<id name="sizeId" column="size_id">
+			<generator class="native">
+			</generator>
+		</id>
+		
+		<property name="sizeName" column="size_name"></property>
+	</class>
+</hibernate-mapping>

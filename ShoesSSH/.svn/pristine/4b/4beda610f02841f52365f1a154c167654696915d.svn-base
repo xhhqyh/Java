@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	 <class name="com.shoe.pojo.Stock" table="t_stock">
+		<id name="stockId" column="stock_id">
+			<generator class="sequence">
+				<param name="sequence_name">stock_seq</param>
+			</generator>
+		</id>
+		<property name="goodsId" column="goods_id"></property>
+		<property name="colorName" column="color_name"></property>
+		<property name="sizeName" column="size_name"></property>
+		<property name="stockNum" column="stock_num"></property>
+		
+	</class>
+	
+
+</hibernate-mapping>
+

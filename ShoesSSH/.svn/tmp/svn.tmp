@@ -1,0 +1,195 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>快乐买后台用户系统-用户管理</title>
+	<link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+	<link rel="shortcut icon" href="img/favicon_logo.ico" />
+	<script type="text/javascript" src="easyUI/jquery.min.js"></script>
+	<script type="text/javascript" src="easyUI/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+	<table id="orderTab" class="easyui-datagrid" title="订单信息" style="width:700px;height:250px"
+				data-options="singleSelect:false,
+							  rownumbers:true,
+							  collapsible:true,
+							  toolbar:'#orderToolbar',
+							  url:'getOrder!allOrder',
+							  method:'post',
+							  pagination:true,
+							  pageSize:10,
+							  fit:true,
+							  fitColumns:true,
+							  pageList:[5,10,20]
+							  ">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'reserveId',width:80" align="center">编号</th>
+				<th data-options="field:'user',width:200,formatter:forUser" align="center">账号</th>
+				<th data-options="field:'recive',width:100,formatter:forRecive" align="center">收货地址</th>
+				<th data-options="field:'reserveTime',width:200" align="center">下单时间</th>
+				<th data-options="field:'reserveStatus',width:200,formatter:forStatus" align="center">状态</th>
+				<!-- <th data-options="field:'userStatus',width:100, formatter:formatterStatus" align="center" >操作</th> -->
+			</tr>
+		</thead>
+	</table>
+	<!-- 广告管理工具条 -->
+	<div id="orderToolbar" style="height:29px;line-height:29px;">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" onclick="deliver(0)">发货</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-no',plain:true" onclick="deliver(3)">退货</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(0)">未发货</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(1)">已发货</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(2)">交易成功</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(3)">退货订单</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(4)">退货成功</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="query(5)">热卖商品</a>
+	</div>
+</body>
+<script>
+	 function forUser(value,row,index){
+		var html="";
+		//alert(value);
+		if(value!=null){
+			html=value.userAccount;
+		}
+		return html;
+	} 
+	 function forRecive(value,row,index){
+			var html="";
+			//alert(value);
+			if(value!=null){
+				html=value.reciveCity+"市"+value.reciveAddress;
+			}
+			return html;
+		} 
+	 function forStatus(value,row,index){
+			var html="";
+			//alert(value);
+			if(value!=null){
+				switch(value){//0:代发货,1:待签中,2:交易成功,3:申请退货,4:退货成功
+				case 0:html="待发货";break;
+				case 1:html="已发货";break;
+				case 2:html="交易成功";break;
+				case 3:html="申请退货";break;
+				case 4:html="退货成功";break;
+				}
+			}
+			return html;
+		}
+	 //条件查询
+	function query(data){
+		 $("#orderTab").datagrid('reload',{
+			 "statuss":data,
+			 "query":"yes"
+		 });
+		/*  $.ajax({
+			 url:'getOrder!getSomeOrder',
+			 data:{"statuss":data},
+			 dataType:'JSON',
+			 type:'POST',
+			 traditional:true,
+			 'success':function(result){
+				
+			 }
+		 }) */
+	 } 
+	
+	//发货和退货
+	function deliver(f){
+		//获取选中项
+		var rows=$("#orderTab").datagrid("getChecked");
+		var str="";
+		var ids=[];
+		var flag=true;
+		var deliver;
+		var deliverd;
+		if(f==0){
+			deliver="发货";
+
+		}else{
+			deliver="退货";
+
+		}
+		//判断是否非空
+		if(rows.length>0){
+			//查看待冻结的账号里面有没有不能处理的;
+			
+			for(i=0;i<rows.length;i++){
+				ids[i]=rows[i].reserveId;
+				if(rows[i].reserveStatus!=f){
+					flag=false;
+				}
+				
+			}
+			//如果有就提示用户,不能处理
+			if(!flag){
+				$.messager.show({
+					title:'错误',
+					msg:"您所勾选的订单中有些不能"+deliver,
+					showType:'show',
+					style:{
+						right:'',
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+						bottom:''
+					}
+				})
+			}else{
+				//如果没有,就提示用户是否需要处理
+				$.messager.confirm('确认','确认要'+deliver+'吗?',function(r){
+					if(r){
+						$.ajax({
+							url:'getOrder!updateOrder',
+							data:{"ids":ids,"status":(f+1)},//传需要处理的数组及处理方式
+							dataType:'JSON',
+							type:"POST",
+							traditional:true,
+							'success':function(result){
+								var isok =result.isok;
+								if(isok){
+									//重新加载
+									$("#orderTab").datagrid('reload');
+								}
+							}
+						})
+					}
+				})
+
+			}
+		}else{
+			$.messager.show({
+				title:'错误',
+				msg:"请至少选择一条订单",
+				showType:'show',
+				style:{
+					right:'',
+					top:document.body.scrollTop+document.documentElement.scrollTop,
+					bottom:''
+				}
+			})
+		}
+		
+		
+		//alert(rows);
+	}
+	function thaw(){
+		
+	}
+	
+</script>
+</html>
+<script>
+	function submit(){
+		$.ajax({
+			url:" updateOrder",
+			data:{"rows":6,"page":10}
+			
+		})
+		
+	}
+</script>
+</html>

@@ -1,0 +1,209 @@
+@charset "utf-8";
+
+/***
+ * 快乐买后台框架样式
+ *  
+ */
+
+/*设置属性默认样式*/
+* {margin:0;padding:0;border:0;}
+body{font-family: "微软雅黑";margin: 0 auto;min-width: 1200px;}
+ul, li{list-style:none;display:block;}
+img{border:0;}
+/*而此段代码的作用是清除 A 链接在点击时会产生虚线的问题.*/
+a,a:focus{text-decoration:none;color:#000;outline:none;blr:expression(this.onFocus=this.blur());}
+a:hover{color:#00a4ac;text-decoration:none;}
+table{border-collapse:collapse;border-spacing: 0;}
+cite {font-style: normal;}
+
+/*top*/
+.topleft{
+	width: 200px;
+	height: 50px;
+	float: left;
+	text-align: center;
+	line-height: 50px;
+}
+
+.topleft a {
+	color: #FFF;
+}
+
+.topleft a img {
+	line-height: 50px;
+	margin-top: 10px;
+}
+
+.topleft a span {
+	position: relative;
+	top: -9px;
+	left: 10px;
+}
+
+.topright {
+	float: right;
+	width: 260px;
+	height: 50px;
+}
+
+.user{
+	width: 160px;
+	height: 30px;
+	background: url(../img/ub1.png) repeat-x;
+	border-radius: 30px;
+	line-height: 50px;
+	margin-top: 10px;
+	clear: both;
+	float: left;
+}
+
+.user span {
+	position: relative;
+	top: -10px;
+	background: url(../img/user.png) no-repeat 15px 5px;
+	color: #b8ceda;
+	padding-left: 35px;
+	font-size: 14px;
+}
+
+.user i {
+	display: inline-block;
+	margin-right: 5px;
+	font-style: normal;
+	line-height: 30px;
+	color: #B8CEDA;
+	position: relative;
+	top: -10px;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+.user b {
+	display: inline-block;
+	width: 20px;
+	height: 18px;
+	background: url(../img/msg.png);
+	text-align: center;
+	line-height: 18px;
+	position: relative;
+	top: -9px;
+	color: #FFF;
+}
+
+.exit {
+	float: right;
+	height: 50px;
+	width: 100px;
+	text-align: center;
+	line-height: 50px;
+}
+
+.exit a {
+	color: #FFF;
+	font-size: 14px;
+}
+
+/*left*/
+.lefttop {
+	height: 40px;
+	background-color: #4667A2;
+	color:#fff;
+	font-size:14px;
+	line-height:40px;
+}
+
+.lefttop span {
+	width: 22px;
+	height: 21px;
+	margin-left: 10px;
+	background: url(../img/leftico.png) no-repeat;
+	float: left;
+	margin-top: 10px;
+	margin-right:8px;
+	margin-left:8px;
+}
+
+.lefttop p {
+	width: 100px;
+	height: 30px;
+	display: inline-block;
+	line-height: 40px;
+	margin-left: 10px;
+	color: #FFF;
+}
+
+.leftmenu {
+	width: 200px;
+	padding-bottom: 9999px;
+	margin-bottom: -9999px;
+	overflow: hidden;
+	background: url(../img/leftline.gif) repeat-y right;
+}
+
+.leftmenu dd {
+	background-color: #D4E7F0;
+	line-height: 30px;
+	font-size: 14px;
+	border-right: 1px #B8CEDA solid;
+}
+
+.title{
+	cursor: pointer;
+	font-weight: bold;
+	border-bottom:1px #B9CAD3 solid ;
+	border-top:1px #B9CAD3 solid ;
+	margin-top: -1px;
+}
+
+.title span {
+	margin: 4px 8px 0 20px;
+}
+
+.title span img {
+	display: inline-block;
+	margin-top: 5px;
+	position: relative;
+	top: 3px;
+}
+
+.leftmenu dd .menuson{
+	display: none;
+	background-color: #F0F9FD;
+}
+
+.leftmenu dd:first-child .menuson{
+	display: block;
+}
+
+.menuson li.active {
+	position: relative;
+	background: url(../img/libg.png) repeat-x;
+	line-height: 30px;
+	color: #FFF;
+}
+
+.menuson li.active cite {
+	background: url(../img/list1.gif) no-repeat;
+}
+
+.menuson li cite {
+	display: block;
+	float: left;
+	margin-left: 40px;
+	background: url(../img/list.gif);
+	width: 16px;
+	height: 16px;
+	margin-top: 8px;
+}
+
+.menuson li.active a {
+	color: #FFF;
+}
+
+.menuson li a {
+	display: block;
+	*display: inline;
+	*padding-top: 5px;
+	font-size: 12px;
+}
+

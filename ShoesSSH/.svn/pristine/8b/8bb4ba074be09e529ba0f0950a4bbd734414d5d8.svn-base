@@ -1,0 +1,267 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>角色管理</title>
+<link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+<script type="text/javascript" src="easyUI/jquery.min.js"></script>
+<script type="text/javascript" src="easyUI/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyUI/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+<table id = "roleDg" class="easyui-datagrid" title="角色列表" style="width:1570px;height:770px"
+	data-options="rownumbers:true,
+				  singleSelect:false,
+				  collapsible:true,
+				  url:'role!getRoleList',
+				  method:'get',
+				  pagination:true,
+				  pageSize:5,
+				  pageList:[2,3,4,5],
+				  toolbar: '#roleTB',
+				  fit:true,
+				  fitColumns:true
+				  ">
+	<thead>
+		<tr>
+			<th data-options="field:'ck',checkbox:true"></th>
+			<th data-options="field:'roleId',width:700,align:'right',hidden:true">ID</th>
+			<th data-options="field:'roleName',width:600">角色名</th>
+			<th data-options="field:'roleInformation',width:600">角色信息</th>
+		</tr>
+	</thead>
+</table>
+
+<div id = "roleTB" style="height:auto">
+	<div style="margin-bottom: 5px">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:'true',text:'新增角色'" onclick="openWin(1)"></a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:'true',text:'编辑角色'" onclick="openWin(2)"></a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:'true',text:'删除角色'" onclick="deleteRole()"></a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:'true',text:'权限设置'" onclick="setPermission()"></a>
+	</div>
+</div>
+
+<div id="addRoleWin" class="easyui-dialog" title="新增角色" data-options="iconCls:'icon-save',closed: true,modal: true" style="width:400px;height:350px;padding:10px">
+	<form id="roleForm" method="post" action = "role!addRole">
+		<table cellpadding="5">
+	    		<tr>
+	    			<td>角色名:</td>
+	    			<td><input id="roleId" type="hidden" name="role.roleId">
+	    				<input id="roleName" class="easyui-textbox" name="role.roleName" data-options="required:true,width:220"/>
+	    			</td>
+	    		</tr>
+	    		<tr>
+	    			<td>角色简介:</td>
+	    			<td>
+	    				<input id="roleInformation" class="easyui-textbox" name="role.roleInformation" data-options="required:true,width:220"/>
+	    			</td>
+	    		</tr>
+	    	</table>
+	    </form>
+	    <div style="text-align:center;padding:5px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="submitForm()">保存</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="clearForm()">清空</a>
+	    </div>
+</div>
+
+<div id="permissionWin" class="easyui-dialog" title="权限设置" data-options="iconCls:'icon-save',closed: true,modal: true" style="width:400px;height:450px;padding:10px">
+    <div>
+    	<ul id="permissionTree" class="easyui-tree"></ul>  
+    </div>
+    
+    <div style="text-align:center;padding:5px">
+    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="savePermission()">保存权限</a>
+    	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="cancel()">取消</a>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+	var url = "";
+	function openWin(flag) {
+		$('#roleForm').form('clear');
+		if(flag !=1){
+			var chkRows = $('#roleDg').datagrid('getChecked');
+			if (chkRows.length == 1){
+				$('#roleId').val(chkRows[0].roleId);
+				$('#roleName').textbox("setValue",chkRows[0].roleName)
+				$('#roleInformation').textbox("setValue",chkRows[0].roleInformation)
+				$('#addRoleWin').dialog('open')
+			}else {
+				$.messager.show({
+					title : '注意',
+					msg : '请选择单行进行修改',
+					showType : 'slide',
+					timeout : 2000,
+					style : {
+						right : '',
+						top : document.body.scrollTop
+								+ document.documentElement.scrollTop,
+						bottom : ''
+					}
+				});
+			}
+		}else{
+			$('#addRoleWin').dialog('open')
+		}
+	}
+
+	function submitForm() {
+		$('#roleForm').form({
+			success : function(data) {
+				$('#addRoleWin').dialog('close');
+				$("#roleDg").datagrid("load");
+			}
+		});
+		$('#roleForm').form('submit');
+	}
+
+	function deleteRole() {
+		var chkRows = $('#roleDg').datagrid('getChecked');
+		alert(chkRows.length);
+		if(chkRows.length>0){
+			var resId =[];
+			for (var i = 0; i < chkRows.length; i++) {
+				resId[i] = chkRows[i].roleId; 
+				alert(resId[i]);
+			}
+			$.ajax({
+				url : "role!deleteRole",
+				method : "post",
+				data : {
+					resId : resId
+				},
+				dataType : "json",
+				traditional:true,
+				success : function(result) {
+					var isOk = result.isOk;
+					//如果删除成功进行刷新
+					if (isOk) {
+						$("#roleDg").datagrid("reload");
+					}
+					
+				}
+			})
+			
+			
+		}else {
+			$.messager.show({
+				title : '注意',
+				msg : '请选择删除的数据',
+				showType : 'slide',
+				timeout : 2000,
+				style : {
+					right : '',
+					top : document.body.scrollTop
+							+ document.documentElement.scrollTop,
+					bottom : ''
+				}
+			});
+		}
+	}
+	$("#permissionTree").tree({
+		url : 'menu!getMenu',
+		method : 'get',
+		animate : true,
+		lines : true,
+		checkbox : true
+	});
+	
+	function setPermission(){
+		var checks =  $("#roleDg").datagrid("getChecked");
+		if(checks.length == 1){
+			//先获取所有选中的节点
+			var nodes = $('#permissionTree').tree('getChecked', ['checked','indeterminate']);
+			//遍历选中的节点 并取消选中
+			for(var i = 0;i < nodes.length;i++){
+				$('#permissionTree').tree("uncheck", nodes[i].target);
+			}		
+			
+			//异步获取该选择的角色对应所有菜单ID
+			$.ajax({
+				url:"role!getRolePermission",
+				method:"get",
+				data:{
+					roleId:checks[0].roleId
+				},
+				dataType:"json",
+				success:function(data){
+					//后台获取数据后
+					for(var j = 0;j < data.length;j++){
+						//通过id获取树节点						
+						var node = $('#permissionTree').tree("find",data[j].MENU_ID);
+						//选中树节点
+						$('#permissionTree').tree("check", node.target);
+					}
+					//打开窗口
+					$("#permissionWin").dialog("open");
+				}
+			});
+		}else{
+			$.messager.show({
+				title:'提示',
+				msg:'请勾选一条角色进行权限设置',
+				showType:'slide',
+				timeout:2000,
+				style:{
+					right:'',
+					top:document.body.scrollTop+document.documentElement.scrollTop,
+					bottom:''
+				}
+			});
+		}
+		
+	}
+	
+	function savePermission(){
+		//先获取角色Id
+		var checks =  $("#roleDg").datagrid("getChecked");
+		var roleId = checks[0].roleId;
+		//再获取所有勾选的菜单ID
+		var nodes = $('#permissionTree').tree('getChecked', ['checked','indeterminate']);		
+		var menuIds = [];
+		for(var i = 0; i < nodes.length;i++){
+			menuIds[i] = nodes[i].id;
+		}
+		$.ajax({
+			url:"role!addPermission",
+			method:"post",
+			data:{
+				roleId:roleId,
+				menuIds:menuIds
+			},
+			traditional:true,
+			dataType:"json",
+			success:function(data){
+				if(data.update=='修改成功'){
+					$("#permissionWin").dialog('close');
+				}
+				$.messager.show({
+					title : '我的消息',
+					msg : data.update,
+					showType:'slide',
+					timeout:2000,
+					style:{
+						right:'',
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+						bottom:''
+					}
+				});
+			}
+			
+			
+		});
+		
+	}
+	
+	
+
+</script>
+
+
+</body>
+</html>

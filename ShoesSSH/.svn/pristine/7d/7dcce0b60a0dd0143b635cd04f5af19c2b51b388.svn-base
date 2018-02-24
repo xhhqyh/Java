@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	 <class name="com.shoe.pojo.Recive" table="T_RECIVE">
+		<id name="reciveId" column="RECIVE_ID">
+			<generator class="sequence">
+			<!-- 序列来源 -->
+				<param name="sequence_name">recive_seq</param>
+			</generator>
+		</id>
+		<property name="reciveName" column="RECIVE_NAME"></property>
+		<property name="reciveCity" column="RECIVE_CITY"></property>
+		<property name="reciveAddress" column="RECIVE_ADDRESS"></property>
+		<property name="recivePost" column="RECIVE_POST"></property>
+		<property name="reciveTel" column="RECIVE_TEL"></property>
+		<property name="reciveStatus" column="RECIVE_STATUS"></property>
+		<property name="userId" column="USER_ID"></property>
+
+	</class>
+
+</hibernate-mapping>
+

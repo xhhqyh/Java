@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	 <class name="com.shoe.pojo.Customize" table="t_customize">
+		<id name="customizeId" column="customize_id">
+			<generator class="sequence">
+				<param name="sequence_name">customize_seq</param>
+			</generator>
+		</id>		
+		<property name="customizeNum" column="customize_num"></property>
+		<property name="customizePrice" column="customize_price"></property>
+		<property name="customizeStyle" column="customize_style"></property>
+		<property name="customizeCard" column="customize_card"></property>
+		<property name="customizeMessage" column="customize_message"></property>
+		<property name="customizeMinute" column="customize_minute"></property>
+		<property name="customizeName" column="customize_name"></property>
+		<!-- 级联关系 -->
+		<many-to-one name="size" class="Size" column="size_Id" cascade="none" fetch="join"></many-to-one>
+		<many-to-one name="type" class="Type" column="type_Id" cascade="none" fetch="join"></many-to-one>
+		<many-to-one name="brand" class="Brand" column="brand_Id" cascade="none" fetch="join"></many-to-one>	
+	</class>
+    <class name="com.shoe.pojo.CustomizeVO" table="t_customize">
+		<id name="customizeId" column="customize_id">
+			<generator class="sequence">
+				<param name="sequence_name">customize_seq</param>
+			</generator>
+		</id>	
+		<property name="sizeId" column="size_id"></property>	
+		<property name="customizeNum" column="customize_num"></property>
+		<property name="customizeMessage" column="customize_message"></property>
+		<property name="customizeMinute" column="customize_minute"></property>
+		<property name="typeId" column="type_id"></property>
+		<property name="brandId" column="brand_id"></property>
+		<property name="customizePrice" column="customize_price"></property>
+		<property name="customizeStyle" column="customize_style"></property>
+		<property name="customizeName" column="customize_name"></property>	
+		<property name="customizeCard" column="customize_card"></property>			
+	</class>
+</hibernate-mapping>
+

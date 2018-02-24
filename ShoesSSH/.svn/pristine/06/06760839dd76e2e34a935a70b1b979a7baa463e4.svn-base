@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	 <class name="com.shoe.pojo.Security" table="t_Security">
+		<id name="securityId" column="Security_id">
+			<generator class="sequence">
+			<!-- 序列来源 -->
+				<param name="sequence_name">security_seq</param>
+			</generator>
+		</id>
+		<property name="securityQuestion" column="SECURITY_QUESTION"></property>
+
+	</class>
+
+</hibernate-mapping>
+

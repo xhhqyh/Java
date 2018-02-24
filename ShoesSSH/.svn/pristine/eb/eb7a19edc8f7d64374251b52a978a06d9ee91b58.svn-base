@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	 <class name="com.shoe.pojo.Evalute" table="t_evalute">
+		<id name="evaluteId" column="evalute_id">
+			<generator class="sequence">
+				<param name="sequence_name">evalute_seq</param>
+			</generator>
+		</id>
+		<property name="evaluteInformation" column="evalute_information"></property>
+		<property name="evaluteTime" column="evalute_time"></property>
+		<property name="evaluteContent" column="evalute_content"></property>
+		<property name="evaluteStatus" column="evalute_status"></property>
+		<property name="evaluteChoice" column="evalute_choice"></property>
+		<property name="evaluteLevel" column="evalute_level"></property>
+		
+		<many-to-one name="user" class="User" column="user_Id" cascade="all"></many-to-one>
+		<many-to-one name="goods" class="GoodsTwo" column="goods_Id" cascade="all"></many-to-one>
+		<many-to-one name="manager" class="ManagerVO" column="manager_Id" cascade="all"></many-to-one>
+	</class>
+	<class name="com.shoe.pojo.EvaluteTwo" table="t_evalute">
+		<id name="evaluteId" column="evalute_id">
+			<generator class="sequence">
+				<param name="sequence_name">evalute_seq</param>
+			</generator>
+		</id>
+		<property name="userId" column="user_id"></property>
+		<property name="goodsId" column="goods_id"></property>
+		<property name="evaluteInformation" column="evalute_information"></property>
+		<property name="evaluteTime" column="evalute_time"></property>
+		<property name="evaluteContent" column="evalute_content"></property>
+		<property name="evaluteStatus" column="evalute_status"></property>
+		<property name="managerId" column="manager_id"></property>
+		<property name="evaluteChoice" column="evalute_choice"></property>
+		<property name="evaluteLevel" column="evalute_level"></property>
+		
+	</class>
+
+</hibernate-mapping>
+

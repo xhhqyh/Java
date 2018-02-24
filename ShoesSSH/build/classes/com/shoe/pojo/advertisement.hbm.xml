@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.shoe.pojo">
+	<class name="Advertisement" table="t_advertisement">
+		<id name="adverId" column="ADVER_ID">
+			<generator class="sequence">
+				<param name="sequence_name">advertisement_seq</param>
+			</generator>
+		</id>
+		
+		<property name="adverName" column="adver_name"></property>
+		<property name="adverSalary" column="adver_salary"></property>
+		<property name="adverStartTime" column="adver_stime"></property>
+		<property name="adverEndTime" column="adver_etime"></property>
+		<property name="adverUrl" column="adver_url"></property>
+		<property name="adverImgUrl" column="adver_imgurl"></property>
+		<property name="adverStatus" column="adver_status"></property>
+		
+		<!-- <many-to-one name="role" class="Role" column="role_id" cascade="all" lazy="false"></many-to-one> -->
+	</class>
+	
+
+</hibernate-mapping>

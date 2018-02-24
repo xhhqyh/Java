@@ -1,0 +1,104 @@
+package com.shoe.pojo;
+
+/**
+ * 积分兑换表(t_pointshop)
+ * 
+ * @author 李杨
+ * @param pShopId
+ *            Integer 编号ID,主键标识符
+ * @param goodsId
+ *            Integer 商品编号,外键,链接商品信息表
+ * @param pShopPoint
+ *            Double 消耗积分
+ * @param pShopStartTime
+ *            String 开始时间
+ * @param pShopEndTime
+ *            String 结束时间
+ * @param pShopNum
+ *            Integer 数量
+ * @param pShopSize
+ *            Double 尺码
+ * @param pShopStatus
+ *            Integer 状态(0:无效,1:有效)
+ */
+public class PointShop {
+	private Integer pShopId;
+	private Integer goodsId;
+	private Double pShopPoint;
+	private String pShopStartTime;
+	private String pShopEndTime;
+	private Integer pShopNum;
+	private Double pShopSize;
+	private Integer pShopStatus;
+
+	public Integer getpShopId() {
+		return pShopId;
+	}
+
+	public void setpShopId(Integer pShopId) {
+		this.pShopId = pShopId;
+	}
+
+	public Integer getGoodsId() {
+		return goodsId;
+	}
+
+	public void setGoodsId(Integer goodsId) {
+		this.goodsId = goodsId;
+	}
+
+	public Double getpShopPoint() {
+		return pShopPoint;
+	}
+
+	public void setpShopPoint(Double pShopPoint) {
+		this.pShopPoint = pShopPoint;
+	}
+
+	public String getpShopStartTime() {
+		return pShopStartTime;
+	}
+
+	public void setpShopStartTime(String pShopStartTime) {
+		this.pShopStartTime = pShopStartTime;
+	}
+
+	public String getpShopEndTime() {
+		return pShopEndTime;
+	}
+
+	public void setpShopEndTime(String pShopEndTime) {
+		this.pShopEndTime = pShopEndTime;
+	}
+
+	public Integer getpShopNum() {
+		return pShopNum;
+	}
+
+	public void setpShopNum(Integer pShopNum) {
+		this.pShopNum = pShopNum;
+	}
+
+	public Double getpShopSize() {
+		return pShopSize;
+	}
+
+	public void setpShopSize(Double pShopSize) {
+		this.pShopSize = pShopSize;
+	}
+
+	public Integer getpShopStatus() {
+		return pShopStatus;
+	}
+
+	public void setpShopStatus(Integer pShopStatus) {
+		this.pShopStatus = pShopStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "PointShop [pShopId=" + pShopId + ", goodsId=" + goodsId + ", pShopPoint=" + pShopPoint
+				+ ", pShopStartTime=" + pShopStartTime + ", pShopEndTime=" + pShopEndTime + ", pShopNum=" + pShopNum
+				+ ", pShopSize=" + pShopSize + ", pShopStatus=" + pShopStatus + "]";
+	}
+}

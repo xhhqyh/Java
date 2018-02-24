@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+	 <class name="com.shoe.pojo.User" table="t_user">
+		<id name="userId" column="user_id">
+			<generator class="sequence">
+			<!-- 序列来源 -->
+				<param name="sequence_name">user_seq</param>
+			</generator>
+		</id>
+		<property name="userAccount" column="USER_ACCOUNT"></property>
+		<property name="usePwd" column="USER_PWD"></property>
+		<property name="userName" column="USER_NAME"></property>
+		<property name="userTel" column="USER_TEL"></property>
+		<property name="userSex" column="USER_SEX"></property>
+		<property name="userEmail" column="USER_EMAIL"></property>
+		<property name="userDate" column="USER_DATE"></property>
+		<property name="securityId" column="SECURITY_ID"></property>
+		<property name="userAnswer" column="USER_ANSWER"></property>
+		<property name="userStatus" column="USER_STATUS"></property>
+	</class>
+
+</hibernate-mapping>
+

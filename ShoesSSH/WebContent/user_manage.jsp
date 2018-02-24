@@ -1,0 +1,125 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>快乐买后台用户系统-用户管理</title>
+	<link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+	<link rel="shortcut icon" href="img/favicon_logo.ico" />
+	<script type="text/javascript" src="easyUI/jquery.min.js"></script>
+	<script type="text/javascript" src="easyUI/jquery.easyui.min.js"></script>
+
+</head>
+<body>
+	<table id="userTab" class="easyui-datagrid" title="用户信息" style="width:700px;height:250px"
+				data-options="singleSelect:false,
+							  rownumbers:true,
+							  collapsible:true,
+							  toolbar:'#advToolbar',
+							  url:'getUser!getUser',
+							  method:'post',
+							  pagination:true,
+							  pageSize:10,
+							  fit:true,
+							  fitColumns : true,
+							  pageList:[5,10,20]
+							  ">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'userId',width:60,hidden:true" align="center">编号</th>
+				<th data-options="field:'userAccount',width:100" align="center">账号</th>
+				<th data-options="field:'userName',width:100" align="center">姓名</th>
+				<th data-options="field:'userTel',width:150" align="center">联系方式</th>
+				<th data-options="field:'userSex',width:100" align="center">性别</th>
+				<th data-options="field:'userEmail',width:140" align="center">邮箱</th>
+				<th data-options="field:'userDate',width:160" align="center">注册时间</th>
+				<th data-options="field:'question',width:200" align="center">密保问题</th>
+				<th data-options="field:'userAnswer',width:200" align="center">密保答案</th>
+				<th data-options="field:'userStatus',width:100" align="center">状态</th>
+			</tr>
+		</thead>
+	</table>
+	<!-- 广告管理工具条 -->
+	<div id="advToolbar" style="height:29px;line-height:29px;">
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-no',plain:true" onclick="freeze(0)">冻结账号</a>
+		<a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-ok',plain:true" onclick="freeze(1)">解冻账号</a>
+	</div>
+</body>
+<script>
+	function freeze(f){
+		//获取选中项
+		var rows=$("#userTab").datagrid("getChecked");
+		var str="";
+		var ids=[];
+		var flag=true;
+		var freeze;
+		var freezed;
+		if(f==0){
+			freeze="封号";
+			freezed="冻结";
+		}else{
+			freeze="正常";
+			freezed="解冻";
+		}
+		//判断是否非空
+		if(rows.length>0){
+			//查看待冻结的账号里面有没有已经冻结的;
+			for(i=0;i<rows.length;i++){
+				ids[i]=rows[i].userId;
+				if(rows[i].userStatus==freeze){
+					str=str+rows[i].userName+"  ";
+					flag=false;
+				}
+				
+			}
+			//如果有已冻结的,就给用户提示,这些用户不能被冻结
+			if(!flag){
+				$.messager.show({
+					title:'错误',
+					msg:"以下用户已经处于"+freeze+"状态,请重新选取: "+str,
+					showType:'show',
+					style:{
+						right:'',
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+						bottom:''
+					}
+				})
+			}else{
+				$.messager.confirm('确认','确认要'+freezed+'吗?',function(r){
+					if(r){
+						$.ajax({
+							url:'getUser!updateUser',
+							data:{"ids":ids,"freeze":freezed},
+							dataType:'JSON',
+							type:"POST",
+							traditional:true,
+							'success':function(result){
+								var isok =result.isok;
+								if(isok){
+									//重新加载
+									$("#userTab").datagrid('reload');
+								}
+							}
+						})
+					}
+				})
+			}
+		}else{
+			$.messager.show({
+				title:'错误',
+				msg:"请至少选择一名用户",
+				showType:'show',
+				style:{
+					right:'',
+					top:document.body.scrollTop+document.documentElement.scrollTop,
+					bottom:''
+				}
+			})
+		}
+	}
+	
+</script>
+</html>

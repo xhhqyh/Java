@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.shoe.pojo">
+
+	 <class name="PointShop" table="T_POINTSHOP" >
+		<id name="pShopId" column="PT_ID">
+			<generator class="sequence">
+			<!-- 序列来源 -->
+				<param name="sequence_name">pointshop_seq</param>
+			</generator>
+		</id>
+		<property name="pShopPoint" column="PT_POINT"></property>
+		<property name="pShopStartTime" column="PT_STIME"></property>
+		<property name="pShopEndTime" column="PT_ETIME"></property>
+		<property name="pShopNum" column="PT_NUM"></property>
+		<property name="pShopStatus" column="PT_STATUS"></property>
+		
+		<many-to-one name="goods" class="Goods" column="GOODS_ID" cascade="all" lazy="false"></many-to-one>
+		<many-to-one name="color" class="Color" column="Color_ID" cascade="all" lazy="false"></many-to-one>
+		<many-to-one name="size" class="Size" column="size_ID" cascade="all" lazy="false"></many-to-one>
+	</class>
+
+</hibernate-mapping>
+

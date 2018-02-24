@@ -1,0 +1,89 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="easyUI/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="easyUI/themes/icon.css">
+<script type="text/javascript" src="easyUI/jquery.min.js"></script>
+<script type="text/javascript" src="easyUI/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="easyUI/easyui-lang-zh_CN.js"></script>
+</head>
+<body>
+
+<div id="center3" class="easyui-dialog" style="width:600px;height:400px" data-options="title:'用户登录'">
+			<form method="post" id="loginform">
+				<table align="center" height="240px" width="300ox">
+					<tr>
+						<th colspan="2" align="center">买买买后台管理</th>
+						<!--<td></td>-->
+					</tr>
+					<tr>
+						<td>管理员：</td>
+						<td><input class="easyui-validatebox" type="text"
+							name="manager.managerName" data-options="required:true" ></input>
+						</td>
+					</tr>
+					<tr>
+						<td>密码：</td>
+						<td><input class="easyui-validatebox" type="password"
+							name="manager.managerPwd"></input></td>
+					</tr>
+					<tr>
+						<td align="center" colspan="2">
+						<button class="button" type="button"
+								id="loginId" onclick="submitForm()">登录</button>
+						<input type="reset" value="注销" /></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+$(function(){
+	  $('#loginform').form({
+		  url:'manager!loginManager',
+		  onSubmit:function(){
+			  var isValid = $(this).form('validate');
+			  if(!isValid){
+					$.messager.progress('close');	// 如果表单是无效的则隐藏进度条
+			 }
+			  return isValid;
+		  },
+		  success:function(result){
+			  result = $.parseJSON(result);
+			  if (result.msg=="success") {
+		    		window.location.href='main.jsp';
+		    	}else{
+		    		$.messager.show({
+						title:'提示',
+						msg:'<div class="light-info"><div class="light-tip icon-tip"></div><div>'+result.msg+'</div></div>',
+						showType:'show',
+						style:{
+							right:'',
+							top:document.body.scrollTop+document.documentElement.scrollTop,
+							bottom:''
+						}
+					});
+		    	}
+		  }   		  
+	  });    	  
+});
+function submitForm(){
+		$('#loginform').submit();
+}  
+
+
+</script>
+
+</body>
+</html>

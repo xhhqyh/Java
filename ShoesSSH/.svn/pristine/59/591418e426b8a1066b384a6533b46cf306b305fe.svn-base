@@ -1,0 +1,225 @@
+package com.shoe.service;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.shoe.dao.GoodsDao;
+import com.shoe.pojo.Color;
+import com.shoe.pojo.Goods;
+import com.shoe.pojo.Size;
+import com.shoe.pojo.Stock;
+
+/**
+ * 商品管理服务层
+ * @author qyh 2018年1月11日
+ *
+ */
+@Service  
+@Transactional
+public class GoodsServiceImpl implements GoodsService {
+
+	@Resource 
+	private GoodsDao goodsDao; 
+	
+	/**
+	 * 获取商品表信息
+	 * add by qyh 2018年1月19日 下午5:16:23
+	 * 
+	 * @param currentPage 当前页
+	 * @param pageSize 每页行数
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public Map<String, Object> getGoodsInfo(int currentPage, int pageSize) {
+		Map<String, Object> data = new HashMap<String, Object>();
+		//获取总数量		
+		try {
+			long goodCount = goodsDao.getCount();
+			//获取查询的数据
+			List<Goods> goodList = goodsDao.getGoodsInfo(currentPage, pageSize);
+			data.put("total", goodCount);
+			data.put("rows", goodList);	
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}			
+		return data;
+	}
+   
+	/**
+	 * 增加商品信息
+	 * add by qyh 2018年1月17日 下午2:36:59
+	 * 
+	 * @param goods 新增商品数据
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public Integer saveGoods(Goods goods) {
+		int returnGoodsId = 0;
+		try {
+			returnGoodsId = goodsDao.saveGoods(goods);
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnGoodsId = 0;
+		}
+		return returnGoodsId;
+	}
+	
+	/**
+	 * 获取商品颜色数据
+	 * add by qyh 2018年1月15日
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public List<Color> getColor() {
+		List<Color> csList=new ArrayList<Color>();
+		//获取总数量		
+		try {
+			//获取查询的数据
+			csList = goodsDao.getColor();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return csList;
+	}
+	
+	/**
+	 * 获取商品尺寸数据
+	 * add by qyh 2018年1月15日
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public List<Size> getSize() {
+		List<Size> csList=new ArrayList<Size>();
+		//获取总数量		
+		try {
+			//获取查询的数据
+			csList = goodsDao.getSize();	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return csList;
+	}
+	
+	/**
+	 * 根据商品id获取库存信息
+	 * add by qyh 2018年1月18日 下午7:22:03
+	 * 
+	 * @param goodsId
+	 * @return
+	 * @throws Exception
+	 */
+	@Override
+	public List<Stock> getStockInfoByGoodsid(int goodsId) {
+		List<Stock> goodsList=new ArrayList<Stock>();
+		//获取总数量		
+		try {
+			//获取查询的数据
+			goodsList = goodsDao.getStockInfoByGoodsid(goodsId);	
+		} catch (Exception e) {
+			e.printStackTrace();
+		}			
+		return goodsList;
+	}
+	
+	/**
+	 * 修改商品时，删除指定商品副图
+	 * add by qyh 2018年1月19日 下午5:17:54
+	 * 
+	 * @param imgId 要删除的商品图片id
+	 * @throws Exception
+	 */
+	@Override
+	public boolean deleteImgByImgid(int imgId) {
+		boolean isOk = true;
+		try {
+			goodsDao.deleteImgByImgid(imgId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isOk = false;
+		}
+		return isOk;
+	}
+	
+	/**
+	 * 修改商品信息
+	 * add by qyh 2018年1月19日 下午5:19:36
+	 * 
+	 * @param goods 修改后的商品数据
+	 * @throws Exception
+	 */
+	@Override
+	public boolean updateGoods(Goods goods) {
+		boolean isOk=true;
+		try {
+			/*操作库存*/
+			//删除库存
+			goodsDao.deleteStockByGoodsId(goods.getGoodsId());
+			//添加新库存
+			goodsDao.addStock(goods.getStocks(),goods.getGoodsId());
+			//判断是否添加新商品副图
+			if( goods.getImgs()!=null && goods.getImgs().size()>0 ){
+				goodsDao.addImgs(goods.getImgs(), goods.getGoodsId());
+			}
+			//修改商品信息
+			goodsDao.updateGoods(goods);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isOk = false;
+		}
+		return isOk;
+	}
+	
+	/**
+	 * 删除指定的商品,根据商品id
+	 * add by qyh 2018年1月19日 下午5:22:40
+	 * 
+	 * @param goodsIds 要删除的商品的id集合
+	 * @throws Exception
+	 */
+	@Override
+	public boolean deleteGoodById(List<Integer> goodsIds) {
+		boolean isOk = true;
+		try {
+			//删除商品对应的副图
+			goodsDao.deleteImgs(goodsIds);
+			//删除商品对应的库存
+			goodsDao.deleteStock(goodsIds);
+			
+			//删除指定商品
+			goodsDao.deleteGoodById(goodsIds);
+		} catch (Exception e) {
+			e.printStackTrace();
+			isOk=false;
+		}
+		return isOk;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
